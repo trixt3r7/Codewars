@@ -43,5 +43,23 @@ namespace CodeWars.LevelSixTest
       Assert.That(PersistentBugger.Persistence(25), Is.EqualTo(2));
       Assert.That(PersistentBugger.Persistence(999), Is.EqualTo(4));
     }
+
+    [Test]
+    public void find_itTests()
+    {
+      Assert.That(FindOddInt.find_it(new[] { 20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5 }), Is.EqualTo(5));
+    }
+
+    [Test]
+    public void DuplicateCountTests()
+    {
+      Assert.That(CountingDuplicates.DuplicateCount("badassed"), Is.EqualTo(3));
+      Assert.That(CountingDuplicates.DuplicateCount(""), Is.EqualTo(0));
+      Assert.That(CountingDuplicates.DuplicateCount("abcde"), Is.EqualTo(0));
+      Assert.That(CountingDuplicates.DuplicateCount("aabbcde"), Is.EqualTo(2));
+      Assert.That(CountingDuplicates.DuplicateCount("aabBcde"), Is.EqualTo(2), "should ignore case");
+      Assert.That(CountingDuplicates.DuplicateCount("Indivisibility"), Is.EqualTo(1));
+      Assert.That(CountingDuplicates.DuplicateCount("Indivisibilities"), Is.EqualTo(2), "characters may not be adjacent");
+    }
   }
 }
