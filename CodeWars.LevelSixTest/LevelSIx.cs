@@ -61,5 +61,13 @@ namespace CodeWars.LevelSixTest
       Assert.That(CountingDuplicates.DuplicateCount("Indivisibility"), Is.EqualTo(1));
       Assert.That(CountingDuplicates.DuplicateCount("Indivisibilities"), Is.EqualTo(2), "characters may not be adjacent");
     }
+
+    [Test]
+    [TestCase(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 }, ExpectedResult = "(123) 456-7890")]
+    [TestCase(new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, ExpectedResult = "(111) 111-1111")]
+    public static string CreatePhoneNumberTest(int[] numbers)
+    {
+      return CreatePhoneNr.CreatePhoneNumber(numbers);
+    }
   }
 }
