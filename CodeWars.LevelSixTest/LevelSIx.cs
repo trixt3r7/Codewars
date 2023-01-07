@@ -69,5 +69,16 @@ namespace CodeWars.LevelSixTest
     {
       return CreatePhoneNr.CreatePhoneNumber(numbers);
     }
+
+    [Test]
+    public void MultiplicationTableTest()
+    {
+      int[,] expected = new int[,] { { 1, 2, 3 }, { 2, 4, 6 }, { 3, 6, 9 } };
+      Assert.That(MultiplicationTables.MultiplicationTable(3), Is.EqualTo(expected));
+
+      expected = new int[,] { { 1, 2, 3, 4, 5 }, { 2, 4, 6, 8, 10 }, { 3, 6, 9, 12, 15 }, { 4, 8, 12, 16, 20 }, { 5, 10, 15, 20, 25 } };
+      Assert.That(MultiplicationTables.MultiplicationTable(5), Is.EqualTo(expected));
+
+    }
   }
 }
