@@ -80,5 +80,51 @@ namespace CodeWars.LevelSixTest
       Assert.That(MultiplicationTables.MultiplicationTable(5), Is.EqualTo(expected));
 
     }
+
+    [Test, Description("It should return correct text")]
+    public void LikesTest()
+    {
+      Assert.That(WhoLikesIt.Likes(new string[0]), Is.EqualTo("no one likes this"));
+      Assert.That(WhoLikesIt.Likes(new string[] { "Peter" }), Is.EqualTo("Peter likes this"));
+      Assert.That(WhoLikesIt.Likes(new string[] { "Jacob", "Alex" }), Is.EqualTo("Jacob and Alex like this"));
+      Assert.That(WhoLikesIt.Likes(new string[] { "Max", "John", "Mark" }), Is.EqualTo("Max, John and Mark like this"));
+      Assert.That(WhoLikesIt.Likes(new string[] { "Alex", "Jacob", "Mark", "Max" }), Is.EqualTo("Alex, Jacob and 2 others like this"));
+    }
+
+    [Test]
+    public static void SpinWordsTest1()
+    {
+      Assert.That(WordsReversed.SpinWords("Welcome"), Is.EqualTo("emocleW"));
+    }
+
+    [Test]
+    public static void SpinWordsTest2()
+    {
+      Assert.That(WordsReversed.SpinWords("Hey fellow warriors"), Is.EqualTo("Hey wollef sroirraw"));
+    }
+
+    [Test]
+    public static void SpinWordsTest3()
+    {
+      Assert.That(WordsReversed.SpinWords("This is a test"), Is.EqualTo("This is a test"));
+    }
+
+    [Test]
+    public static void SpinWordsTest4()
+    {
+      Assert.That(WordsReversed.SpinWords("This is another test"), Is.EqualTo("This is rehtona test"));
+    }
+
+    [Test]
+    public static void SpinWordsTest5()
+    {
+      Assert.That(WordsReversed.SpinWords("You are almost to the last test"), Is.EqualTo("You are tsomla to the last test"));
+    }
+
+    [Test]
+    public static void SpinWordsTest6()
+    {
+      Assert.That(WordsReversed.SpinWords("Just kidding there is still one more"), Is.EqualTo("Just gniddik ereht is llits one more"));
+    }
   }
 }
