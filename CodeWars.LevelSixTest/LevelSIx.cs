@@ -92,6 +92,17 @@ namespace CodeWars.LevelSixTest
     }
 
     [Test]
+    public void SplitStringTests()
+    {
+      Assert.That(SplitStrings.SplitString("abc"), Is.EqualTo(new string[] { "ab", "c_" }));
+      Assert.That(SplitStrings.SplitString("abcdef"), Is.EqualTo(new string[] { "ab", "cd", "ef" }));
+    }
+  }
+
+  [TestFixture]
+  public class SpinWordsTests
+  {
+    [Test]
     public static void SpinWordsTest1()
     {
       Assert.That(WordsReversed.SpinWords("Welcome"), Is.EqualTo("emocleW"));
@@ -127,4 +138,5 @@ namespace CodeWars.LevelSixTest
       Assert.That(WordsReversed.SpinWords("Just kidding there is still one more"), Is.EqualTo("Just gniddik ereht is llits one more"));
     }
   }
+
 }

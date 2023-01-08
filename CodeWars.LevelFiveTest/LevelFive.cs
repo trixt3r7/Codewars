@@ -33,4 +33,40 @@ namespace CodeWars.LevelFiveTest
       Assert.That(HumanReadableTime.GetReadableTime(359999), Is.EqualTo("99:59:59"));
     }
   }
+
+  [TestFixture]
+  public class RgbToHexConversionTests
+  {
+    [Test]
+    public void RgbToHexTests()
+    {
+      Assert.That(RgbToHex.Rgb(255, 255, 255), Is.EqualTo("FFFFFF"));
+      Assert.That(RgbToHex.Rgb(255, 255, 300), Is.EqualTo("FFFFFF"));
+      Assert.That(RgbToHex.Rgb(0, 0, 0), Is.EqualTo("000000"));
+      Assert.That(RgbToHex.Rgb(148, 0, 211), Is.EqualTo("9400D3"));
+      Assert.That(RgbToHex.Rgb(148, -20, 211), Is.EqualTo("9400D3"), "Handle negative numbers.");
+      Assert.That(RgbToHex.Rgb(144, 195, 212), Is.EqualTo("90C3D4"));
+      Assert.That(RgbToHex.Rgb(212, 53, 12), Is.EqualTo("D4350C"), "Consider single hex digit numbers.");
+    }
+  }
+
+  [TestFixture]
+  public class DirReductionTests
+  {
+
+    [Test]
+    public void Test1()
+    {
+      string[] a = new string[] { "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" };
+      string[] b = new string[] { "WEST" };
+      Assert.That(DirectionsReduction.dirReduc(a), Is.EqualTo(b));
+    }
+    [Test]
+    public void Test2()
+    {
+      string[] a = new string[] { "NORTH", "WEST", "SOUTH", "EAST" };
+      string[] b = new string[] { "NORTH", "WEST", "SOUTH", "EAST" };
+      Assert.That(DirectionsReduction.dirReduc(a), Is.EqualTo(b));
+    }
+  }
 }
