@@ -34,6 +34,12 @@ namespace CodeWars.FundamentalsTest
       Assert.That(FindFirstNonConsecutiveNumber.FirstNonConsecutive(new int[] { 1, 2, 3, 4, 6, 7, 8 }), Is.EqualTo(6));
     }
 
+    [Test]
+    public void PaddedNumbersTest()
+    {
+      Assert.That(PaddedNumbers.PadNumbers(5), Is.EqualTo("Value is 00005"));
+    }
+
     [TestFixture]
     public class FeastTests
     {
