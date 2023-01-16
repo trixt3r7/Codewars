@@ -11,7 +11,7 @@ public  class AddingBigNumbers
 
   public static string Add(string a, string b)
   {
-    var aa = a.PadLeft(Math.Max(a.Length, b.Length), '0').Select(x => x - 48).ToArray();
+    var aa = a.PadLeft(Math.Max(a.Length, b.Length), '0').Select(x => x - 48).ToArray(); // '1' = 49 therefore - 48
     var bb = b.PadLeft(Math.Max(a.Length, b.Length), '0').Select(x => x - 48).ToArray();
     var rs = "";
     var add = 0;
