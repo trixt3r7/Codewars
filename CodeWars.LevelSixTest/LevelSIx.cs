@@ -151,4 +151,67 @@ namespace CodeWars.LevelSixTest
       Assert.That(DuplicateEncoder.DuplicateEncode("(( @"), Is.EqualTo("))(("));
     }
   }
+
+  [TestFixture]
+  public class UniqueOrderedTest
+  {
+    [Test]
+    public void UniqueInOrderTest1()
+    {
+      Assert.That(UniqueOrdered.UniqueInOrder(""), Is.EqualTo(""));
+    }
+    [Test]
+    public void UniqueInOrderTest2()
+    {
+      Assert.That(UniqueOrdered.UniqueInOrder("AAAABBBCCDAABBB"), Is.EqualTo("ABCDAB"));
+    }
+    [Test]
+    public void UniqueInOrderTest3()
+    {
+      Assert.That(UniqueOrdered.UniqueInOrder("ABBCcAD"), Is.EqualTo("ABCcAD"));
+    }
+    [Test]
+    public void UniqueInOrderTest4()
+    {
+      Assert.That(UniqueOrdered.UniqueInOrder(new int[] { 1, 2, 2, 3, 3 }), Is.EqualTo(new int[] { 1, 2, 3 }));
+    }
+  }
+
+  [TestFixture]
+  public class FindOutlierTests
+  {
+    [Test]
+    public static void FindTest1()
+    {
+      int[] exampleTest1 = { 2, 6, 8, -10, 3 };
+      Assert.IsTrue(3 == FindOutlier.Find(exampleTest1));
+    }
+
+    [Test]
+    public static void FindTest2()
+    {
+      int[] exampleTest2 = { 206847684, 1056521, 7, 17, 1901, 21104421, 7, 1, 35521, 1, 7781 };
+      Assert.IsTrue(206847684 == FindOutlier.Find(exampleTest2));
+    }
+
+    [Test]
+    public static void FindTest3()
+    {
+      int[] exampleTest3 = { int.MaxValue, 0, 1 };
+      Assert.IsTrue(0 == FindOutlier.Find(exampleTest3));
+    }
+  }
+
+  [TestFixture]
+  public class AlphabetPositionTest
+  {
+    [Test]
+    public void ReplaceAlphabetPositionTest()
+    {
+      Assert.That(AlphabetPosition.ReplaceAlphabetPosition("The sunset sets at twelve o' clock."),
+        Is.EqualTo("20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"));
+      Assert.That(AlphabetPosition.ReplaceAlphabetPosition("The narwhal bacons at midnight."),
+        Is.EqualTo("20 8 5 14 1 18 23 8 1 12 2 1 3 15 14 19 1 20 13 9 4 14 9 7 8 20"));
+    }
+  }
 }
