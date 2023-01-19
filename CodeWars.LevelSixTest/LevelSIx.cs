@@ -138,5 +138,34 @@ namespace CodeWars.LevelSixTest
       Assert.That(WordsReversed.SpinWords("Just kidding there is still one more"), Is.EqualTo("Just gniddik ereht is llits one more"));
     }
   }
+  [TestFixture]
+  public class SumDigitalRotTest
+  {
+    private SumDigitalRot num;
+
+    [SetUp]
+    public void SetUp()
+    {
+      num = new SumDigitalRot();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+      num = null;
+    }
+
+    [Test]
+    public void DigitalRootTests()
+    {
+      Assert.That(num.DigitalRoot(16), Is.EqualTo(7));
+      Assert.That(num.DigitalRoot(195), Is.EqualTo(6));
+      Assert.That(num.DigitalRoot(992), Is.EqualTo(2));
+      Assert.That(num.DigitalRoot(999999999999), Is.EqualTo(9));
+      Assert.That(num.DigitalRoot(167346), Is.EqualTo(9));
+      Assert.That(num.DigitalRoot(0), Is.EqualTo(0));
+      Assert.That(num.DigitalRoot(10), Is.EqualTo(1));
+    }
+  }
 
 }

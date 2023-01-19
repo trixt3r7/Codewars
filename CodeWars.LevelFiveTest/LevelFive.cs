@@ -69,4 +69,129 @@ namespace CodeWars.LevelFiveTest
       Assert.That(DirectionsReduction.dirReduc(a), Is.EqualTo(b));
     }
   }
+
+  [TestFixture]
+  public class Rot13Test
+  {
+    [Test]
+    public void Test1()
+    {
+      Assert.That(Rot13Cipher.Rot13("test"), Is.EqualTo("grfg"), String.Format("Input: test, Expected Output: grfg, Actual Output: {0}", Rot13Cipher.Rot13("test")));
+    }
+
+    [Test]
+    public void Test2()
+    {
+      Assert.That(Rot13Cipher.Rot13("Test"), Is.EqualTo("Grfg"), String.Format("Input: Test, Expected Output: Grfg, Actual Output: {0}", Rot13Cipher.Rot13("Test")));
+    }
+    [Test]
+    public void Test3()
+    {
+      Assert.That(Rot13Cipher.Rot13("10+2 is twelve."), Is.EqualTo("10+2 vf gjryir."), String.Format("Input: Test, Expected Output: 10+2 vf gjryir., Actual Output: {0}", Rot13Cipher.Rot13("10+2 is twelve.")));
+    }
+    [Test]
+    public void Test4()
+    {
+      Assert.That(Rot13Cipher.Rot13("Codewars"), Is.EqualTo("Pbqrjnef"), String.Format("Input: Test, Expected Output: Pbqrjnef, Actual Output: {0}", Rot13Cipher.Rot13("Codewars")));
+    }
+  }
+
+  [TestFixture]
+  public class FirstNonRepeatTest
+  {
+    [Test]
+    public void FirstNonRepeatingLetterTests()
+    {
+      Assert.That(FirstNonRepeat.FirstNonRepeatingLetter("a"), Is.EqualTo("a"));
+      Assert.That(FirstNonRepeat.FirstNonRepeatingLetter("stress"), Is.EqualTo("t"));
+      Assert.That(FirstNonRepeat.FirstNonRepeatingLetter("moonmen"), Is.EqualTo("e"));
+      Assert.That(FirstNonRepeat.FirstNonRepeatingLetter("Reset"), Is.EqualTo("R"));
+
+      Assert.That(FirstNonRepeat.FirstNonRepeatingLetter("aabb"), Is.EqualTo(""));
+      Assert.That(FirstNonRepeat.FirstNonRepeatingLetter(""), Is.EqualTo(""));
+      Assert.That(FirstNonRepeat.FirstNonRepeatingLetter("}}][["), Is.EqualTo("]"));
+    }
+  }
+  [TestFixture]
+  public class ParenthesesTest
+  {
+    [Test]
+    public void ValidParenthesesTest1()
+    {
+      Assert.That(Parentheses.ValidParentheses("()"), Is.EqualTo(true));
+    }
+
+    [Test]
+    public void ValidParenthesesTest2()
+    {
+      Assert.That(Parentheses.ValidParentheses(")(((("), Is.EqualTo(false));
+    }
+
+    [Test]
+    public void ValidParenthesesTest3()
+    {
+      Assert.That(Parentheses.ValidParentheses("(())((()())())"), Is.EqualTo(true));
+    }
+    [Test]
+    public void ValidParenthesesTest4()
+    {
+      Assert.That(Parentheses.ValidParentheses("("), Is.EqualTo(false));
+    }
+    [Test]
+    public void ValidParenthesesTest5()
+    {
+      Assert.That(Parentheses.ValidParentheses("hi(hi))("), Is.EqualTo(false));
+    }
+    [Test]
+    public void ValidParenthesesTest6()
+    {
+      Assert.That(Parentheses.ValidParentheses("hi(hi)"), Is.EqualTo(true));
+    }
+  }
+  [TestFixture]
+  public class MaxSubarraySumTest
+  {
+    [Test]
+    public void MaxSequenceTest1()
+    {
+      Assert.That(MaxSubarraySum.MaxSequence(new int[0]), Is.EqualTo(0));
+    }
+    [Test]
+    public void MaxSequenceTest2()
+    {
+      Assert.That(MaxSubarraySum.MaxSequence(new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 }), Is.EqualTo(6));
+    }
+    [Test]
+    public void MaxSequenceTest3()
+    {
+      Assert.That(MaxSubarraySum.MaxSequence(new int[] { -2, -3 }), Is.EqualTo(0));
+    }
+  }
+
+  [TestFixture]
+  public class GreedIsGoodTest
+  {
+    [Test]
+    public static void ShouldBeWorthless()
+    {
+      Assert.That(GreedIsGood.Score(new int[] { 2, 3, 4, 6, 2 }), Is.EqualTo(0), "Should be 0 :-(");
+    }
+
+    [Test]
+    public static void ShouldValueTriplets()
+    {
+      Assert.That(GreedIsGood.Score(new int[] { 4, 4, 4, 3, 3 }), Is.EqualTo(400), "Should be 400");
+    }
+
+    [Test]
+    public static void ShouldValueMixedSets()
+    {
+      Assert.That(GreedIsGood.Score(new int[] { 2, 4, 4, 5, 4 }), Is.EqualTo(450), "Should be 450");
+    }
+    [Test]
+    public static void OnesAndFives()
+    {
+      Assert.That(GreedIsGood.Score(new int[] { 1, 1, 1, 1, 5 }), Is.EqualTo(1150), "Should be 1150");
+    }
+  }
 }
