@@ -243,4 +243,15 @@ namespace CodeWars.LevelSixTest
         Is.EqualTo("20 8 5 14 1 18 23 8 1 12 2 1 3 15 14 19 1 20 13 9 4 14 9 7 8 20"));
     }
   }
+
+  [TestFixture]
+  public class ConvertToCamelCaseTest
+  {
+    [Test]
+    public void ToCamelCaseTests()
+    {
+      Assert.That(ConvertToCamelCase.ToCamelCase("the_stealth_warrior"), Is.EqualTo("theStealthWarrior"), "Kata.ToCamelCase('the_stealth_warrior') did not return correct value");
+      Assert.That(ConvertToCamelCase.ToCamelCase("The-Stealth-Warrior"), Is.EqualTo("TheStealthWarrior"), "Kata.ToCamelCase('The-Stealth-Warrior') did not return correct value");
+    }
+  }
 }
