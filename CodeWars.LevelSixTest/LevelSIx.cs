@@ -1,3 +1,4 @@
+using CodeWars.LevelFive;
 using CodeWars.LevelSix;
 
 namespace CodeWars.LevelSixTest
@@ -96,6 +97,13 @@ namespace CodeWars.LevelSixTest
     {
       Assert.That(SplitStrings.SplitString("abc"), Is.EqualTo(new string[] { "ab", "c_" }));
       Assert.That(SplitStrings.SplitString("abcdef"), Is.EqualTo(new string[] { "ab", "cd", "ef" }));
+    }
+
+    [Test]
+    public void FindMissingLetterTests()
+    {
+      Assert.That(MissingLetter.FindMissingLetter(new[] { 'a', 'b', 'c', 'd', 'f' }), Is.EqualTo('e'));
+      Assert.That(MissingLetter.FindMissingLetter(new[] { 'O', 'Q', 'R', 'S' }), Is.EqualTo('P'));
     }
   }
 

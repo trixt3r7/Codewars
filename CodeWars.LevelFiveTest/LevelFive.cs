@@ -327,4 +327,133 @@ namespace CodeWars.LevelFiveTest
       Assert.That(helper.PageIndex(0), Is.EqualTo(-1));
     }
   }
+
+  [TestFixture]
+  public class SudokuTests
+  {
+    private static object[] testCases = new object[]
+    {
+      new object[]
+      {
+        "Finished!",
+        new int[][]
+        {
+          new int[] {5, 3, 4, 6, 7, 8, 9, 1, 2},
+          new int[] {6, 7, 2, 1, 9, 5, 3, 4, 8},
+          new int[] {1, 9, 8, 3, 4, 2, 5, 6, 7},
+          new int[] {8, 5, 9, 7, 6, 1, 4, 2, 3},
+          new int[] {4, 2, 6, 8, 5, 3, 7, 9, 1},
+          new int[] {7, 1, 3, 9, 2, 4, 8, 5, 6},
+          new int[] {9, 6, 1, 5, 3, 7, 2, 8, 4},
+          new int[] {2, 8, 7, 4, 1, 9, 6, 3, 5},
+          new int[] {3, 4, 5, 2, 8, 6, 1, 7, 9},
+        },
+      },
+      new object[]
+      {
+        "Try again!",
+        new int[][]
+        {
+          new int[] {5, 3, 4, 6, 7, 8, 9, 1, 2},
+          new int[] {6, 7, 2, 1, 9, 5, 3, 4, 8},
+          new int[] {1, 9, 8, 3, 0, 2, 5, 6, 7},
+          new int[] {8, 5, 0, 7, 6, 1, 4, 2, 3},
+          new int[] {4, 2, 6, 8, 5, 3, 7, 9, 1},
+          new int[] {7, 0, 3, 9, 2, 4, 8, 5, 6},
+          new int[] {9, 6, 1, 5, 3, 7, 2, 8, 4},
+          new int[] {2, 8, 7, 4, 1, 9, 6, 3, 5},
+          new int[] {3, 0, 0, 2, 8, 6, 1, 7, 9},
+        },
+      },
+    };
+
+    [Test, TestCaseSource("testCases")]
+    public void DoneOrNotTest(string expected, int[][] board) => Assert.That(Sudoku.DoneOrNot(board), Is.EqualTo(expected));
+  }
+
+  [TestFixture]
+  public class RemovedNumbersTests
+  {
+    [Test]
+    public void RandomTest()
+    {
+      List<long[]> r = new List<long[]> {
+        new long[] { 178, 258 },
+        new long[] { 258, 178 }
+    };
+      Assert.That(RemovedNumbers.removNb(304), Is.EqualTo(r));
+    }
+
+    [Test]
+    public void Test1()
+    {
+      List<long[]> r = new List<long[]> {
+        new long[] { 15, 21 },
+        new long[] { 21, 15 }      
+    };
+      Assert.That(RemovedNumbers.removNb(26), Is.EqualTo(r));
+    }
+
+    [Test]
+    public void Test10()
+    {
+      List<long[]> r = new List<long[]> {
+        new long[] { 550320, 908566 },
+        new long[] { 908566, 550320 },
+        new long[] { 559756, 893250 },
+        new long[] { 893250, 559756 }
+    };
+      Assert.That(RemovedNumbers.removNb(1000003), Is.EqualTo(r));
+    }
+
+    [Test]
+    public void Test11()
+    {
+      List<long[]> r = new List<long[]> {
+        new long[] { 677076, 738480 },
+        new long[] { 738480, 677076 }
+    };
+      Assert.That(RemovedNumbers.removNb(1000008), Is.EqualTo(r));
+    }
+
+    [Test]
+    public void Test2()
+    {
+      Assert.That(RemovedNumbers.removNb(100), Is.EqualTo(new List<long[]> { }));
+    }
+
+    [Test]
+    public void Test3()
+    {
+      List<long[]> r = new List<long[]> {
+        new long[] { 55, 91 },
+        new long[] { 91, 55 }
+    };
+      Assert.That(RemovedNumbers.removNb(101), Is.EqualTo(r));
+    }
+
+    [Test]
+    public void Test4()
+    {
+      List<long[]> r = new List<long[]> {
+        new long[] { 70, 73 },
+        new long[] { 73, 70 }
+    };
+      Assert.That(RemovedNumbers.removNb(102), Is.EqualTo(r));
+    }
+
+
+    // 304 - RandomTest <178,258>
+    // 26 - Test1 <15,21>
+    // 1000003 - Test10 <550320,908566>
+    // 1000008 - Test11 <677076,738480>
+    // 101 - Test3 <55,91>
+    // 102 - Test4 <70,73>
+    // 110 - Test5 <70,85>
+    // 1006 - Test6 <546,925>
+    // 103 - Test7
+    // 446 - Test8 <252, 393>
+    // 846 - Test9 <498, 717>
+
+  }
 }

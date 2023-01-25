@@ -32,7 +32,7 @@ public class UniqueOrdered
 	{
 	  if (!Equals(item, result.Last()))
 	  {
-		result.Add(item);
+		  result.Add(item);
 	  }
 	}
     return result;
