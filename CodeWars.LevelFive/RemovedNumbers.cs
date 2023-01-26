@@ -1,6 +1,6 @@
 ﻿namespace CodeWars.LevelFive;
 
-// https://www.codewars.com/kata/5547cc7dcad755e480000004/train/csharp
+// Is my friend cheating? - https://www.codewars.com/kata/5547cc7dcad755e480000004/
 
 public class RemovedNumbers
 {
