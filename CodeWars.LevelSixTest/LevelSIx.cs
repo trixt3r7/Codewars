@@ -22,8 +22,8 @@ namespace CodeWars.LevelSixTest
     public void ArrayDiffTest()
     {
       Assert.That(ArrayDifference.ArrayDiff(new int[] { 1, 2 }, new int[] { 1 }), Is.EqualTo(new int[] { 2 }));
-      Assert.That(ArrayDifference.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 1 }), Is.EqualTo(new int[] { 2, 2 }));     
-      Assert.That(ArrayDifference.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 2 }), Is.EqualTo(new int[] { 1 }));     
+      Assert.That(ArrayDifference.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 1 }), Is.EqualTo(new int[] { 2, 2 }));
+      Assert.That(ArrayDifference.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 2 }), Is.EqualTo(new int[] { 1 }));
       Assert.That(ArrayDifference.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { }), Is.EqualTo(new int[] { 1, 2, 2 }));
       Assert.That(ArrayDifference.ArrayDiff(new int[] { }, new int[] { 1, 2 }), Is.EqualTo(new int[] { }));
       Assert.That(ArrayDifference.ArrayDiff(new int[] { 1, 2, 3 }, new int[] { 1, 2 }), Is.EqualTo(new int[] { 3 }));
@@ -149,7 +149,7 @@ namespace CodeWars.LevelSixTest
   [TestFixture]
   public class SumDigitalRotTest
   {
-    private SumDigitalRot num;
+    private SumDigitalRot? num;
 
     [SetUp]
     public void SetUp()
@@ -166,7 +166,7 @@ namespace CodeWars.LevelSixTest
     [Test]
     public void DigitalRootTests()
     {
-      Assert.That(num.DigitalRoot(16), Is.EqualTo(7));
+      Assert.That(num?.DigitalRoot(16), Is.EqualTo(7));
       Assert.That(num.DigitalRoot(195), Is.EqualTo(6));
       Assert.That(num.DigitalRoot(992), Is.EqualTo(2));
       Assert.That(num.DigitalRoot(999999999999), Is.EqualTo(9));
@@ -258,8 +258,82 @@ namespace CodeWars.LevelSixTest
     [Test]
     public void ToCamelCaseTests()
     {
-      Assert.That(ConvertToCamelCase.ToCamelCase("the_stealth_warrior"), Is.EqualTo("theStealthWarrior"), "Kata.ToCamelCase('the_stealth_warrior') did not return correct value");
-      Assert.That(ConvertToCamelCase.ToCamelCase("The-Stealth-Warrior"), Is.EqualTo("TheStealthWarrior"), "Kata.ToCamelCase('The-Stealth-Warrior') did not return correct value");
+      Assert.That(ConvertToCamelCase.ToCamelCase("the_stealth_warrior"), Is.EqualTo("theStealthWarrior"), "ToCamelCase('the_stealth_warrior') did not return correct value");
+      Assert.That(ConvertToCamelCase.ToCamelCase("The-Stealth-Warrior"), Is.EqualTo("TheStealthWarrior"), "ToCamelCase('The-Stealth-Warrior') did not return correct value");
     }
+  }
+
+  [TestFixture]
+  public class AlternatingSplitTest
+  {
+    [Test]
+    public void EncryptExampleTests()
+    {
+      Assert.That(AlternatingSplit.Encrypt("This is a test!", 0), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Encrypt("This is a test!", 1), Is.EqualTo("hsi  etTi sats!"));
+      Assert.That(AlternatingSplit.Encrypt("This is a test!", 2), Is.EqualTo("s eT ashi tist!"));
+      Assert.That(AlternatingSplit.Encrypt("This is a test!", 3), Is.EqualTo(" Tah itse sits!"));
+      Assert.That(AlternatingSplit.Encrypt("This is a test!", 4), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Encrypt("This is a test!", -1), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Encrypt("This kata is very interesting!", 1), Is.EqualTo("hskt svr neetn!Ti aai eyitrsig"));
+    }
+
+    [Test]
+    public void DecryptExampleTests()
+    {
+      Assert.That(AlternatingSplit.Decrypt("This is a test!", 0), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Decrypt("hsi  etTi sats!", 1), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Decrypt("s eT ashi tist!", 2), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Decrypt(" Tah itse sits!", 3), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Decrypt("This is a test!", 4), Is.EqualTo("This is a test!"));
+      Assert.That(AlternatingSplit.Decrypt("This is a test!", -1), Is.EqualTo("This is a test!"));     
+      Assert.That(AlternatingSplit.Decrypt("hskt svr neetn!Ti aai eyitrsig", 1), Is.EqualTo("This kata is very interesting!"));
+    }
+
+    [Test]
+    public void EmptyTests()
+    {
+      Assert.That(AlternatingSplit.Encrypt("", 0), Is.EqualTo(""));
+      Assert.That(AlternatingSplit.Decrypt("", 0), Is.EqualTo(""));
+    }
+
+    [Test]
+    public void NullTests()
+    {
+      Assert.That(AlternatingSplit.Encrypt(null, 0), Is.EqualTo(null));
+      Assert.That(AlternatingSplit.Decrypt(null, 0), Is.EqualTo(null));
+    }
+  }
+
+  [TestFixture]
+  public class NumberLookBigTest
+  {
+    private static IEnumerable<TestCaseData> testCases
+    {
+      get
+      {
+        yield return new TestCaseData(1)
+                        .Returns(true)
+                        .SetDescription("1 is narcissitic");
+        yield return new TestCaseData(153)
+                        .Returns(true)
+                        .SetDescription("153 is narcissitic");
+        yield return new TestCaseData(371)
+                        .Returns(true)
+                        .SetDescription("371 is narcissitic");
+        yield return new TestCaseData(929544158)
+                        .Returns(false)
+                        .SetDescription("929544158 is not narcissitic");
+        yield return new TestCaseData(146511208)
+                        .Returns(true)
+                        .SetDescription("146511208 is narcissitic");
+        yield return new TestCaseData(2085408895)
+                        .Returns(false)
+                        .SetDescription("2085408895 is not narcissitic");
+      }
+    }
+
+    [Test, TestCaseSource("testCases")]
+    public bool Test(int n) => NumberLookBig.Narcissistic(n);
   }
 }
