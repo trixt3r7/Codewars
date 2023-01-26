@@ -399,9 +399,9 @@ namespace CodeWars.LevelFiveTest
     {
       List<long[]> r = new List<long[]> {
         new long[] { 550320, 908566 },
-        new long[] { 908566, 550320 },
         new long[] { 559756, 893250 },
-        new long[] { 893250, 559756 }
+        new long[] { 893250, 559756 },
+        new long[] { 908566, 550320 }               
     };
       Assert.That(RemovedNumbers.removNb(1000003), Is.EqualTo(r));
     }
