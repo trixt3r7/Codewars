@@ -336,4 +336,61 @@ namespace CodeWars.LevelSixTest
     [Test, TestCaseSource("testCases")]
     public bool Test(int n) => NumberLookBig.Narcissistic(n);
   }
+
+  [TestFixture]
+  public class DeleteOccurencesNthTests
+  {
+    [Test]
+    public void DeleteNthTest1()
+    {
+      var expected = new int[] { 20, 37, 21 };
+
+      var actual = DeleteOccurencesNth.DeleteNth(new int[] { 20, 37, 20, 21 }, 1);
+
+      CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void DeleteNthTest2()
+    {
+      var expected = new int[] { 1, 1, 3, 3, 7, 2, 2, 2 };
+
+      var actual = DeleteOccurencesNth.DeleteNth(new int[] { 1, 1, 3, 3, 7, 2, 2, 2, 2 }, 3);
+
+      CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void DeleteNthTest3()
+    {
+      var expected = new int[] { 1, 1, 3, 2, 3, 3, 1, 2 };
+
+      var actual = DeleteOccurencesNth.DeleteNth(new int[] { 1, 1, 3, 2, 3, 3, 1, 1, 2, 3 }, 3);
+
+      CollectionAssert.AreEqual(expected, actual);
+    }
+
+    [Test]
+    public void DeleteNthTest4()
+    {
+      var expected = new int[] { 2, 1, 2, 2, 1, 1 };
+
+      var actual = DeleteOccurencesNth.DeleteNth(new int[] { 2, 1, 2, 2, 2, 2, 1, 1, 1, 1 }, 3);
+
+      CollectionAssert.AreEqual(expected, actual);
+    }
+  }
+  [TestFixture]
+  public class BitCountingTests
+  {
+    [Test]
+    public void CountBits()
+    {
+      Assert.That(BitCounting.CountBits(0), Is.EqualTo(0));
+      Assert.That(BitCounting.CountBits(4), Is.EqualTo(1));
+      Assert.That(BitCounting.CountBits(7), Is.EqualTo(3));
+      Assert.That(BitCounting.CountBits(9), Is.EqualTo(2));
+      Assert.That(BitCounting.CountBits(10), Is.EqualTo(2));
+    }
+  }
 }
