@@ -300,8 +300,10 @@ namespace CodeWars.LevelSixTest
     [Test]
     public void NullTests()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
       Assert.That(AlternatingSplit.Encrypt(null, 0), Is.EqualTo(null));
       Assert.That(AlternatingSplit.Decrypt(null, 0), Is.EqualTo(null));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
   }
 
@@ -333,9 +335,30 @@ namespace CodeWars.LevelSixTest
       }
     }
 
-    [Test, TestCaseSource("testCases")]
+    [Test, TestCaseSource(nameof(testCases))]
     public bool Test(int n) => NumberLookBig.Narcissistic(n);
   }
+
+  [TestFixture]
+  public class DigitsPowTests
+  {
+    [Test]
+    public void Test1()
+    {
+      Assert.That(DigitsPow.digPow(89, 1), Is.EqualTo(1));
+    }
+    [Test]
+    public void Test2()
+    {
+      Assert.That(DigitsPow.digPow(92, 1), Is.EqualTo(-1));
+    }
+    [Test]
+    public void Test3()
+    {
+      Assert.That(DigitsPow.digPow(46288, 3), Is.EqualTo(51));
+    }
+  }
+
 
   [TestFixture]
   public class DeleteOccurencesNthTests
