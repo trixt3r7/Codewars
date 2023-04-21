@@ -416,4 +416,29 @@ namespace CodeWars.LevelSixTest
       Assert.That(BitCounting.CountBits(10), Is.EqualTo(2));
     }
   }
+
+  [TestFixture]
+  public class SortOddTests
+  {
+    [Test]
+    public void SortArrayTests()
+    {
+      Assert.That(SortOdd.SortArray(new int[] { 5, 3, 2, 8, 1, 4 }), Is.EqualTo(new int[] { 1, 3, 2, 8, 5, 4 }));
+      Assert.That(SortOdd.SortArray(new int[] { 5, 3, 1, 8, 0 }), Is.EqualTo(new int[] { 1, 3, 5, 8, 0 }));
+      Assert.That(SortOdd.SortArray(new int[] { }), Is.EqualTo(new int[] { }));
+    }
+  }
+
+  [TestFixture]
+  public class FindUniqueNumberTest
+  {
+    [TestCase(new[] { 2, 2, 2, 2, 2, 2, 2, 10, 2, 2, 2, 2 }, ExpectedResult = 10)]
+    [TestCase(new[] { 1, 2, 2, 2 }, ExpectedResult = 1)]
+    [TestCase(new[] { -2, 2, 2, 2 }, ExpectedResult = -2)]
+    [TestCase(new[] { 11, 11, 14, 11, 11 }, ExpectedResult = 14)]
+    public int BaseTest(IEnumerable<int> numbers)
+    {
+      return FindUniqueNumber.GetUnique(numbers);
+    }
+  }
 }
