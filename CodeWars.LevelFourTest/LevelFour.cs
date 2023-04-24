@@ -65,5 +65,92 @@ namespace CodeWars.LevelFourTest
 ));
       }
     }
-  }
+
+    [Test]
+    public void SnailTest1()
+    {
+            //int[][] array =
+            //{
+            //    new []{1, 2, 3},
+            //    new []{4, 5, 6},
+            //    new []{7, 8, 9}
+            //};
+            //var r = new[] { 1, 2, 3, 6, 9, 8, 7, 4, 5 };
+            //Test1(array, r);
+
+            //int[][] array2 =
+            //{
+            //    new []{1, 2, 3},
+            //    new []{8, 9, 4},
+            //    new []{7, 6, 5}
+            //};
+            //var r2 = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            //Test2(array2, r2);
+
+            int[][] array3 =
+            {
+                new []{1, 2, 3, 4},
+                new []{5, 6, 7, 8},
+                new []{9, 10, 11, 12},
+                new []{13, 14, 15, 16},
+            };
+            var r3 = new[] { 1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5, 6, 7, 11, 10 };
+            Test3(array3, r3);
+
+            int[][] array4 =
+            {
+                new []{1},
+
+            };
+            var r4 = new[] { 1 };
+            Test4(array4, r4);
+
+            int[][] array5 =
+            {
+                Array.Empty<int>(),
+            };
+            var r5 = Array.Empty<int>();
+            Test5(array5, r5);
+        }
+
+    public string Int2dToString(int[][] a)
+    {
+        return $"[{string.Join("\n", a.Select(row => $"[{string.Join(",", row)}]"))}]";
+    }
+
+        //public void Test1(int[][] array, int[] result)
+        //{
+        //    var text = $"{Int2dToString(array)}\nshould be sorted to\n[{string.Join(",", result)}]\n";
+        //    Console.WriteLine(text);
+        //    Assert.That(SnailSort.Snail(array), Is.EqualTo(result));
+        //}
+
+        //public void Test2(int[][] array, int[] result)
+        //{
+        //    var text = $"{Int2dToString(array)}\nshould be sorted to\n[{string.Join(",", result)}]\n";
+        //    Console.WriteLine(text);
+        //    Assert.That(SnailSort.Snail(array), Is.EqualTo(result));
+        //}
+        public void Test3(int[][] array, int[] result)
+        {
+            var text = $"{Int2dToString(array)}\nshould be sorted to\n[{string.Join(",", result)}]\n";
+            Console.WriteLine(text);
+            Assert.That(SnailSort.Snail(array), Is.EqualTo(result));
+        }
+        public void Test4(int[][] array, int[] result)
+        {
+            var text = $"{Int2dToString(array)}\nshould be sorted to\n[{string.Join(",", result)}]\n";
+            Console.WriteLine(text);
+            Assert.That(SnailSort.Snail(array), Is.EqualTo(result));
+        }
+
+        public void Test5(int[][] array, int[] result)
+        {
+            var text = $"{Int2dToString(array)}\nshould be sorted to\n[{string.Join(",", result)}]\n";
+            Console.WriteLine(text);
+            Assert.That(SnailSort.Snail(array), Is.EqualTo(result));
+        }
+
+
+    }
 }
