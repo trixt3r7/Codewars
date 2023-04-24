@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
-// ## INSTRUCTIONS ##
+﻿// ## INSTRUCTIONS ##
 // Take an array and remove every second element from the array.
 // Always keep the first element and start removing with the next element.
 
 namespace Codewars.Fundamentals
 {
-  public class RemovingElements
+    public class RemovingElements
   {
     public static object[] RemoveEveryOther(object[] arr)
     {

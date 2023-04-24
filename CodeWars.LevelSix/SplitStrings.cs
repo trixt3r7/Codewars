@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-// https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/train/csharp
+﻿// https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/train/csharp
 
 namespace CodeWars.LevelSix;
 

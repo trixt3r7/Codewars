@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Codewars.Fundamentals;
+﻿namespace Codewars.Fundamentals;
 
 public class FindFirstNonConsecutiveNumber
 {

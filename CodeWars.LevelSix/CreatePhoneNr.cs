@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CodeWars.LevelSix;
+﻿namespace CodeWars.LevelSix;
 
 public class CreatePhoneNr
 {
   public static string CreatePhoneNumber(int[] numbers)
   {
-    var temp = int.Parse(string.Concat(numbers));
     return int.Parse(string.Concat(numbers)).ToString("(000) 000-0000");
 
   }
