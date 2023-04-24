@@ -300,8 +300,10 @@ namespace CodeWars.LevelSixTest
     [Test]
     public void NullTests()
     {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
       Assert.That(AlternatingSplit.Encrypt(null, 0), Is.EqualTo(null));
       Assert.That(AlternatingSplit.Decrypt(null, 0), Is.EqualTo(null));
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     }
   }
 
@@ -333,9 +335,30 @@ namespace CodeWars.LevelSixTest
       }
     }
 
-    [Test, TestCaseSource("testCases")]
+    [Test, TestCaseSource(nameof(testCases))]
     public bool Test(int n) => NumberLookBig.Narcissistic(n);
   }
+
+  [TestFixture]
+  public class DigitsPowTests
+  {
+    [Test]
+    public void Test1()
+    {
+      Assert.That(DigitsPow.digPow(89, 1), Is.EqualTo(1));
+    }
+    [Test]
+    public void Test2()
+    {
+      Assert.That(DigitsPow.digPow(92, 1), Is.EqualTo(-1));
+    }
+    [Test]
+    public void Test3()
+    {
+      Assert.That(DigitsPow.digPow(46288, 3), Is.EqualTo(51));
+    }
+  }
+
 
   [TestFixture]
   public class DeleteOccurencesNthTests
@@ -392,5 +415,52 @@ namespace CodeWars.LevelSixTest
       Assert.That(BitCounting.CountBits(9), Is.EqualTo(2));
       Assert.That(BitCounting.CountBits(10), Is.EqualTo(2));
     }
+  }
+
+  [TestFixture]
+  public class SortOddTests
+  {
+    [Test]
+    public void SortArrayTests()
+    {
+      Assert.That(SortOdd.SortArray(new int[] { 5, 3, 2, 8, 1, 4 }), Is.EqualTo(new int[] { 1, 3, 2, 8, 5, 4 }));
+      Assert.That(SortOdd.SortArray(new int[] { 5, 3, 1, 8, 0 }), Is.EqualTo(new int[] { 1, 3, 5, 8, 0 }));
+      Assert.That(SortOdd.SortArray(new int[] { }), Is.EqualTo(new int[] { }));
+    }
+  }
+
+  [TestFixture]
+  public class FindUniqueNumberTest
+  {
+    [TestCase(new[] { 2, 2, 2, 2, 2, 2, 2, 10, 2, 2, 2, 2 }, ExpectedResult = 10)]
+    [TestCase(new[] { 1, 2, 2, 2 }, ExpectedResult = 1)]
+    [TestCase(new[] { -2, 2, 2, 2 }, ExpectedResult = -2)]
+    [TestCase(new[] { 11, 11, 14, 11, 11 }, ExpectedResult = 14)]
+    public int BaseTest(IEnumerable<int> numbers)
+    {
+      return FindUniqueNumber.GetUnique(numbers);
+    }
+  }
+
+  [TestFixture]
+  public class HighestScoringWordTests
+  {
+    private static IEnumerable<TestCaseData> testCases
+    {
+      get
+      {
+        yield return new TestCaseData("man i need a taxi up to ubud").Returns("taxi");
+        yield return new TestCaseData("what time are we climbing up to the volcano").Returns("volcano");
+        yield return new TestCaseData("take me to semynak").Returns("semynak");
+        yield return new TestCaseData("aa b").Returns("aa");
+        yield return new TestCaseData("b aa").Returns("b");
+        yield return new TestCaseData("bb d").Returns("bb");
+        yield return new TestCaseData("d bb").Returns("d");
+        yield return new TestCaseData("aaa b").Returns("aaa");
+      }
+    }
+
+    [Test, TestCaseSource("testCases")]
+    public string Test(string s) => HighestScoringWord.High(s);
   }
 }
