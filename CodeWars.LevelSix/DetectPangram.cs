@@ -2,6 +2,13 @@
 
 public class DetectPangram
 {
+  public static bool IsPangramQuery(string str)
+  {
+    return (from c in str.ToLower()
+            where Char.IsLetter(c)
+            select c).Distinct().Count() == 26;    
+  }
+
   public static bool IsPangram(string str)
   {
     return str.ToLower().Where(Char.IsLetter).Distinct().Count() == 26;
