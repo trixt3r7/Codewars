@@ -2,6 +2,13 @@
 
 public class ArrayDifference
 {
+  public static int[] ArrayDiffQuery(int[] a, int[] b)
+  {
+    return (from num in a 
+            where !b.Contains(num)
+            select num).ToArray();    
+  }
+
   public static int[] ArrayDiff(int[] a, int[] b)
   {
     return a.Where(num => !b.Contains(num)).ToArray();

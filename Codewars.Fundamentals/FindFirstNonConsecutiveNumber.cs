@@ -2,7 +2,14 @@
 
 public class FindFirstNonConsecutiveNumber
 {
-  public static object FirstNonConsecutive(int[] arr) =>
+  public static object FirstNonConsecutiveQuery(int[] arr)
+  {
+    return (from value in arr select value)
+      .Skip(1).SkipWhile((e, id) => e == arr[id] + 1)
+      .FirstOrDefault();
+
+  }
+    public static object FirstNonConsecutive(int[] arr) =>
     arr.Skip(1).SkipWhile((e, id) => e == arr[id] + 1).Cast<int?>().FirstOrDefault()!;
 
   public static object FirstNonConsecutiveV2(int[] arr) =>
