@@ -23,9 +23,9 @@ namespace CodeWars.LevelFour
                 result.AddRange(currentList[0]);
                 if(currentList.Count > 1)
                 {
-                    result.AddRange(currentList.Skip(1).Select(x => x.Last()).SkipLast(1));
+                    result.AddRange(currentList.Skip(1).SkipLast(1).Select(x => x.Last()));
                     result.AddRange(currentList.Last().Reverse());
-                    result.AddRange(currentList.Skip(1).Select(x => x.First()).SkipLast(1).Reverse());
+                    result.AddRange(currentList.Skip(1).SkipLast(1).Select(x => x.First()).Reverse());
                 }
                 index++;
             }
