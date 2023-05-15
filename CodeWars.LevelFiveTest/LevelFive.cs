@@ -442,7 +442,6 @@ namespace CodeWars.LevelFiveTest
       Assert.That(RemovedNumbers.removNb(102), Is.EqualTo(r));
     }
 
-
     // 304 - RandomTest <178,258>
     // 26 - Test1 <15,21>
     // 1000003 - Test10 <550320,908566>
@@ -454,6 +453,41 @@ namespace CodeWars.LevelFiveTest
     // 103 - Test7
     // 446 - Test8 <252, 393>
     // 846 - Test9 <498, 717>
-
   }
+
+    [TestFixture]
+    public static class ToSmallestTests
+    {
+
+        private static void testing(long n, string res)
+        {
+            Assert.That(Array2String(FindTheSmallest.Smallest(n)), Is.EqualTo(res));
+        }
+        private static string Array2String(long[] list)
+        {
+            return "[" + string.Join(", ", list) + "]";
+        }
+        [Test]
+        public static void test1()
+        {
+            Console.WriteLine("Basic Tests smallest");
+            testing(261235, "[126235, 2, 0]");
+            testing(209917, "[29917, 0, 1]");
+            testing(285365, "[238565, 3, 1]");
+            testing(269045, "[26945, 3, 0]");
+            testing(296837, "[239687, 4, 1]");
+
+            //Random Tests*******smallest
+            //364530953582348128
+            //765240716429020960
+
+            //Basic Tests smallest
+            //261235
+            //209917
+            //285365
+            //269045
+            //296837
+            //187863002809
+        }
+    }
 }
